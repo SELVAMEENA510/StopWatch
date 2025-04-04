@@ -21,13 +21,14 @@ function timechange() {
 function start() {
     if (interval) stop();
     interval = setInterval(timechange, 1000);
-     isPaused = false;
+    isPaused = false;
     updatePauseButton("Pause");
 
 }
 
 function stop() {
-    clearInterval(interval)
+    clearInterval(interval);
+    interval=null;
 }
 
 function reset() {
@@ -52,5 +53,4 @@ function updatePauseButton(text) {
     const pauseBtn = document.querySelector('button[onclick="pauseResume()"]');
     if (pauseBtn) pauseBtn.textContent = text;
 }
-
 
