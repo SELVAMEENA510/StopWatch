@@ -19,7 +19,7 @@ function timechange() {
 }
 
 function start() {
-    if (interval) stop();
+    if (interval==null);
     interval = setInterval(timechange, 1000);
     isPaused = false;
     updatePauseButton("Pause");
@@ -28,7 +28,7 @@ function start() {
 
 function stop() {
     clearInterval(interval);
-    interval=null;
+    interval = null;
 }
 
 function reset() {
@@ -40,11 +40,14 @@ function reset() {
 
 function pauseResume() {
     if (interval) {
-        stop();
+        clearInterval(interval);
+        interval = null;
         isPaused = true;
         updatePauseButton("Resume");
     } else if (isPaused) {
-        start();
+
+        interval = setInterval(timechange, 1000);
+        isPaused = true;
         updatePauseButton("Pause");
     }
 }
